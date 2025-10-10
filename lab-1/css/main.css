@@ -1,0 +1,131 @@
+html {
+  font-size: 16px; /* bazowy rozmiar czcionki */
+  font-family: system-ui, sans-serif; /* font systemowy */
+}
+body {
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------------------------- Navbar ----------------------------- */
+
+nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 22px 30px;
+  border-bottom: 1px solid #ccc;
+  text-align: right;
+  background-color: #f1f1f1;
+}
+nav a {
+  margin-right: 30px;
+  font-size: larger;
+  font-weight: bold;
+  border: 1px solid #2778c9;
+  border-radius: 30px;
+  padding: 7px 17px;
+  background-color: #0066cc18;
+}
+
+a {
+  color: #0066cc;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------- Main ----------------------------- */
+
+main {
+  max-width: 500px;
+  margin: 10px auto 180px auto;
+  line-height: 1.6;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px#0000007d;
+}
+
+h1 {
+  margin-top: 130px;
+}
+
+h2 {
+  background: #04ff04;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 255, 4, 1) 0%,
+    rgba(87, 199, 133, 1) 100%
+  );
+  padding: 0 10px;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+
+p,
+ul {
+  font-size: 1rem;
+  color: #000000;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+form {
+  border-radius: 10px;
+  padding: 5px;
+}
+
+form input {
+  width: 95%;
+  padding: 10px;
+  margin-top: 15px;
+  border-width: 0 1px 1px 0;
+  box-shadow: 0 0 1px#0000007d;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+form button {
+  background: #04ff04;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 255, 4, 1) 0%,
+    rgba(87, 199, 133, 1) 100%
+  );
+  border: 1px #000000;
+  border-radius: 15px;
+  box-shadow: #00000075 3px 3px 0 0;
+  color: #000000;
+  cursor: pointer;
+  font-weight: bolder;
+  padding: 10px 15px;
+  margin-top: 20px;
+}
+
+/* ---------------------------- Stopka ----------------------------- */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f1f1f1;
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+  border-top: 1px solid #ccc;
+}
+footer a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+footer a:hover {
+  text-decoration: underline;
+}
