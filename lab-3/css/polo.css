@@ -30,6 +30,7 @@ body {
 
 .card {
   margin: 0 auto;
+  align-items: flex-start;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -39,21 +40,77 @@ body {
 }
 
 .pic {
-  flex: 0 0 500px;
+  position: relative;
+  width: 500px;
   aspect-ratio: 1 / 1;
   background-image: var(--zdjecie);
   background-size: cover;
-  border: 2px solid var(--color-variable);
   border-radius: 8px;
   background-color: #fff;
   overflow-x: hidden;
 }
+.pic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-variable);
+  border-radius: 8px;
+  pointer-events: none;
+  clip-path: inset(100% 0 0 0);
+  transition: border-color 0.5s ease;
+}
+
+/* ── Keyframes: osobne nazwy per kolor (ta sama treść) */
+@keyframes border-reveal-b {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes border-reveal-r {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes border-reveal-g {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+@keyframes border-reveal-y {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+.product-card:has(#color-blue:checked) .pic::after {
+  animation: border-reveal-b 0.7s ease-in-out forwards;
+}
+.product-card:has(#color-red:checked) .pic::after {
+  animation: border-reveal-r 0.7s ease-in-out forwards;
+}
+.product-card:has(#color-green:checked) .pic::after {
+  animation: border-reveal-g 0.7s ease-in-out forwards;
+}
+.product-card:has(#color-yellow:checked) .pic::after {
+  animation: border-reveal-y 0.7s ease-in-out forwards;
+}
 
 .description-div {
   box-sizing: border-box;
-  flex: 0 0 300px;
+  width: 300px;
+  height: 500px;
 
-  display: flex;
   flex-direction: column;
 }
 
@@ -71,6 +128,7 @@ h2 {
   border-radius: 3px;
   font-weight: bold;
   color: #fff;
+  transition: background-color 0.4s ease;
 }
 .description {
   padding-top: 1rem;
@@ -97,7 +155,30 @@ h2 {
   border: 2px solid #333;
   cursor: pointer;
   position: relative;
+  transition: transform 0.18s ease, box-shadow 0.2s ease,
+    background-color 0.4s ease;
 }
+@keyframes dot-pop {
+  0% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1.06);
+  }
+}
+.color-dot::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s ease 0.12s, transform 0.2s ease 0.12s;
+}
+
 .color-dot[data-color='blue'] {
   background: var(--color-blue);
 }
@@ -110,44 +191,49 @@ h2 {
 .color-dot[data-color='yellow'] {
   background: var(--color-yellow);
 }
-.color-dot::after {
-  content: '';
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  display: none;
-}
 
 .product-card:has(#color-blue:checked) .color-dot[data-color='blue'] {
   background: #fff;
+  animation: dot-pop 0.4s ease-in-out;
+  transform: scale(1.06);
 }
 .product-card:has(#color-blue:checked) .color-dot[data-color='blue']::after {
-  display: block;
   background: var(--color-blue);
+  opacity: 1;
+  transform: scale(1);
 }
 
 .product-card:has(#color-red:checked) .color-dot[data-color='red'] {
   background: #fff;
+  animation: dot-pop 0.4s ease-in-out;
+  transform: scale(1.06);
 }
 .product-card:has(#color-red:checked) .color-dot[data-color='red']::after {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
   background: var(--color-red);
 }
 
 .product-card:has(#color-green:checked) .color-dot[data-color='green'] {
   background: #fff;
+  animation: dot-pop 0.4s ease-in-out;
+  transform: scale(1.06);
 }
 .product-card:has(#color-green:checked) .color-dot[data-color='green']::after {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
   background: var(--color-green);
 }
 
 .product-card:has(#color-yellow:checked) .color-dot[data-color='yellow'] {
   background: #fff;
+  animation: dot-pop 0.4s ease-in-out;
+  transform: scale(1.06);
 }
 .product-card:has(#color-yellow:checked)
   .color-dot[data-color='yellow']::after {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
   background: var(--color-yellow);
 }
 
@@ -165,6 +251,7 @@ h2 {
   margin-top: 1rem;
 }
 .sizepicker-button {
+  position: relative;
   display: inline-grid;
   place-items: center;
   width: 3rem;
@@ -173,23 +260,57 @@ h2 {
   border: 2px solid #333;
   font-weight: bold;
   cursor: pointer;
+  transition: transform 0.4s, background-color 0.3s ease, border-color 0.3s ease;
+}
+.sizepicker-button:hover {
+  transform: translateY(-2px) rotateX(8deg) scale(1.1);
+  animation: colorPulse-unchecked 1s ease-in-out infinite;
+}
+.sizepicker-button:active {
+  transform: translateY(10px) rotate(25deg) scale(0.8);
+}
+@keyframes colorPulse-unchecked {
+  0%,
+  100% {
+    color: #333;
+  }
+  50% {
+    color: var(--color-variable);
+  }
+}
+@keyframes colorPulse-checked {
+  0%,
+  100% {
+    color: #fff;
+  }
+  50% {
+    color: #333;
+  }
 }
 .sizepicker .hidden-radio:checked + .sizepicker-button {
   background: var(--color-variable);
   border-color: var(--color-variable);
   color: #fff;
+  transform: scale(1.1);
+}
+.sizepicker .hidden-radio:checked + .sizepicker-button::after {
+  transform: scaleX(1);
+}
+.sizepicker .hidden-radio:checked + .sizepicker-button:hover {
+  animation: colorPulse-checked 1.2s ease-in-out infinite;
 }
 
 /* koszyk */
 .price {
   font-weight: bold;
   font-size: 1.4rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   text-align: center;
 }
 .cart-button {
+  display: block;
+  margin-inline: auto;
   padding: 1.5rem;
-  margin: 0 auto;
   width: 80%;
   color: #fff;
   font-size: 1.3rem;
@@ -199,9 +320,15 @@ h2 {
   background: var(--color-variable);
   cursor: pointer;
   margin-top: 2rem;
+  transition: background-color 0.4s ease, transform 0.3s ease;
 }
-
-/* Zmiana koloru po wyborze */
+.cart-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.38);
+}
+.cart-button:active {
+  transform: translateY(5px) scale(0.95);
+}
 .product-card:has(#color-blue:checked) .card {
   --color-variable: var(--color-blue);
   --zdjecie: url('../img/polo_b.png');
