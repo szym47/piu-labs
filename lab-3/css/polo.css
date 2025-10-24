@@ -1,0 +1,220 @@
+:root {
+  --zdjecie: url('../img/polo_b.png');
+  --color-blue: #1e5a9c;
+  --color-red: #d32f2f;
+  --color-green: #388e3c;
+  --color-yellow: #fbc02d;
+  --color-variable: var(--color-blue);
+}
+
+/* RESET */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+.hidden-radio {
+  visibility: hidden;
+}
+
+body {
+  background: #fff;
+  color: #333;
+  overflow-x: hidden;
+}
+.product-card {
+  background: #eee;
+  margin: 0.5rem;
+}
+
+.card {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: min(100%, calc(500px + 300px + 8rem + 2rem));
+  padding: 2rem 4rem;
+  gap: 2rem;
+}
+
+.pic {
+  flex: 0 0 500px;
+  aspect-ratio: 1 / 1;
+  background-image: var(--zdjecie);
+  background-size: cover;
+  border: 2px solid var(--color-variable);
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-x: hidden;
+}
+
+.description-div {
+  box-sizing: border-box;
+  flex: 0 0 300px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+.promotion {
+  background: var(--color-variable);
+  padding: 0.2rem 0.9rem;
+  border-radius: 3px;
+  font-weight: bold;
+  color: #fff;
+}
+.description {
+  padding-top: 1rem;
+  width: 100%;
+}
+
+/* WYBÓR KOLORU */
+.field-caption-color {
+  margin-top: 1.5rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-left: 2.75rem;
+}
+.colorpicker {
+  display: flex;
+  padding: 1rem 2rem;
+  gap: 1.25rem;
+  justify-content: center;
+}
+.color-dot {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 2px solid #333;
+  cursor: pointer;
+  position: relative;
+}
+.color-dot[data-color='blue'] {
+  background: var(--color-blue);
+}
+.color-dot[data-color='red'] {
+  background: var(--color-red);
+}
+.color-dot[data-color='green'] {
+  background: var(--color-green);
+}
+.color-dot[data-color='yellow'] {
+  background: var(--color-yellow);
+}
+.color-dot::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  display: none;
+}
+
+.product-card:has(#color-blue:checked) .color-dot[data-color='blue'] {
+  background: #fff;
+}
+.product-card:has(#color-blue:checked) .color-dot[data-color='blue']::after {
+  display: block;
+  background: var(--color-blue);
+}
+
+.product-card:has(#color-red:checked) .color-dot[data-color='red'] {
+  background: #fff;
+}
+.product-card:has(#color-red:checked) .color-dot[data-color='red']::after {
+  display: block;
+  background: var(--color-red);
+}
+
+.product-card:has(#color-green:checked) .color-dot[data-color='green'] {
+  background: #fff;
+}
+.product-card:has(#color-green:checked) .color-dot[data-color='green']::after {
+  display: block;
+  background: var(--color-green);
+}
+
+.product-card:has(#color-yellow:checked) .color-dot[data-color='yellow'] {
+  background: #fff;
+}
+.product-card:has(#color-yellow:checked)
+  .color-dot[data-color='yellow']::after {
+  display: block;
+  background: var(--color-yellow);
+}
+
+/*  WYBÓR ROZMIARU */
+.field-caption-size {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.25rem;
+  margin-left: 2.2rem;
+}
+.sizepicker {
+  justify-content: center;
+  display: flex;
+  gap: 2px;
+  margin-top: 1rem;
+}
+.sizepicker-button {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 5px;
+  border: 2px solid #333;
+  font-weight: bold;
+  cursor: pointer;
+}
+.sizepicker .hidden-radio:checked + .sizepicker-button {
+  background: var(--color-variable);
+  border-color: var(--color-variable);
+  color: #fff;
+}
+
+/* koszyk */
+.price {
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+.cart-button {
+  padding: 1.5rem;
+  margin: 0 auto;
+  width: 80%;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border: 2px solid #333;
+  border-radius: 8px;
+  background: var(--color-variable);
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+/* Zmiana koloru po wyborze */
+.product-card:has(#color-blue:checked) .card {
+  --color-variable: var(--color-blue);
+  --zdjecie: url('../img/polo_b.png');
+}
+.product-card:has(#color-red:checked) .card {
+  --color-variable: var(--color-red);
+  --zdjecie: url('../img/polo_r.png');
+}
+.product-card:has(#color-green:checked) .card {
+  --color-variable: var(--color-green);
+  --zdjecie: url('../img/polo_g.png');
+}
+.product-card:has(#color-yellow:checked) .card {
+  --color-variable: var(--color-yellow);
+  --zdjecie: url('../img/polo_y.png');
+}

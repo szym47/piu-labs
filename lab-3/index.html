@@ -1,12 +1,101 @@
 <!DOCTYPE html>
 <html lang="pl">
   <head>
-    <meta charset="UTF-8" />
-    <title>Lab 3</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <meta charset="utf-8" />
+    <title>Polo</title>
+    <link rel="stylesheet" href="css/polo.css" />
   </head>
   <body>
-    <h1>Lab 3</h1>
-    <a href="..">Powrót</a>
+    <main class="page">
+      <article class="product-card">
+        <div class="card">
+          <div class="pic" role="img" aria-label="Koszulka polo"></div>
+
+          <div class="description-div">
+            <div class="header">
+              <h2>Koszulka Polo</h2>
+              <span class="promotion">Promocja!</span>
+            </div>
+
+            <p class="description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
+              amet est ad possimus vel numquam.
+            </p>
+
+            <div class="field">
+              <div class="field-caption-color">Kolor</div>
+              <div class="colorpicker" role="radiogroup">
+                <label
+                  class="color-dot"
+                  for="color-blue"
+                  data-color="blue"
+                ></label>
+                <label
+                  class="color-dot"
+                  for="color-red"
+                  data-color="red"
+                ></label>
+                <label
+                  class="color-dot"
+                  for="color-green"
+                  data-color="green"
+                ></label>
+                <label
+                  class="color-dot"
+                  for="color-yellow"
+                  data-color="yellow"
+                ></label>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="field-caption-size">Rozmiar</div>
+              <div class="sizepicker" role="radiogroup">
+                <input id="s" class="hidden-radio" type="radio" name="size" />
+                <label class="sizepicker-button" for="s">S</label>
+
+                <input
+                  id="m"
+                  class="hidden-radio"
+                  type="radio"
+                  name="size"
+                  checked
+                />
+                <label class="sizepicker-button" for="m">M</label>
+
+                <input id="l" class="hidden-radio" type="radio" name="size" />
+                <label class="sizepicker-button" for="l">L</label>
+
+                <input id="xl" class="hidden-radio" type="radio" name="size" />
+                <label class="sizepicker-button" for="xl">XL</label>
+              </div>
+            </div>
+
+            <div class="price">59,99 zł</div>
+            <button class="cart-button">🛒 Do koszyka</button>
+          </div>
+        </div>
+        <input
+          id="color-blue"
+          class="hidden-radio"
+          type="radio"
+          name="color"
+          checked
+        />
+        <input id="color-red" class="hidden-radio" type="radio" name="color" />
+        <input
+          id="color-green"
+          class="hidden-radio"
+          type="radio"
+          name="color"
+        />
+        <input
+          id="color-yellow"
+          class="hidden-radio"
+          type="radio"
+          name="color"
+        />
+      </article>
+    </main>
   </body>
 </html>
