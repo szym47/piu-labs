@@ -2,11 +2,34 @@
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <title>Lab 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lab 4 - Kanban</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/defer.js" defer></script>
   </head>
   <body>
-    <h1>Lab 4</h1>
-    <a href="..">Powrót</a>
+    <div id="mainBoard">
+      <div class="column">
+        <h2>Do Zrobienia</h2>
+        <button id="addToDo">Dodaj kartę</button>
+        <button id="recolorToDo">Koloruj kolumnę</button>
+        <button id="sortToDo">Sortuj A-Z</button>
+        <span>Liczba kartek: <strong id="cntToDo">0</strong></span>
+      </div>
+      <div class="column">
+        <h2>W Trakcie</h2>
+        <button id="addInProgress">Dodaj kartę</button>
+        <button id="recolorInProgress">Koloruj kolumnę</button>
+        <button id="sortInProgress">Sortuj A-Z</button>
+        <span>Liczba kartek: <strong id="cntInProgress">0</strong></span>
+      </div>
+      <div class="column">
+        <h2>Zrobione</h2>
+        <button id="addDone">Dodaj kartę</button>
+        <button id="recolorDone">Koloruj kolumnę</button>
+        <button id="sortDone">Sortuj A-Z</button>
+        <span>Liczba kartek: <strong id="cntDone">0</strong></span>
+      </div>
+    </div>
   </body>
 </html>
