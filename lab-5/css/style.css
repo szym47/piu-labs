@@ -1,0 +1,151 @@
+/* Reset / base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  margin: 20px;
+  background: linear-gradient(135deg, #f6f8fb 0%, #e4ecf7 100%);
+  color: #222;
+}
+
+h2 {
+  margin-top: 0;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.controls button {
+  padding: 8px 14px;
+  border: 1px solid #3a6aa8;
+  background: #2f70c9;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.controls button:hover {
+  background: #1c5fb5;
+}
+
+.controls button:active {
+  transform: scale(0.94);
+}
+
+.counters {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.counters strong {
+  font-weight: 600;
+  color: #184f96;
+}
+
+.board {
+  min-height: 340px;
+  border: 2px dashed #b9c6d6;
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 16px;
+  box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.12);
+  transition: border-color 0.3s;
+}
+
+.board:empty {
+  place-content: center;
+  font-size: 14px;
+  color: #7a8694;
+  border-style: dotted;
+}
+
+.board:empty::before {
+  content: 'Brak kształtów!';
+  opacity: 0.8;
+}
+
+.shape {
+  width: 70px;
+  height: 70px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  font-size: 11px;
+  font-weight: 600;
+  color: #163753;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+  transition: transform 0.25s cubic-bezier(0.4, 0.2, 0.2, 1), box-shadow 0.25s,
+    background-color 0.35s;
+  box-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.25);
+  outline: 0;
+}
+
+.shape.square {
+  border-radius: 10px;
+}
+
+.shape.circle {
+  border-radius: 50%;
+}
+
+.shape:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.35);
+}
+
+.shape:active {
+  transform: translateY(0) scale(0.94);
+}
+
+.shape.removing {
+  animation: pop-out 0.28s forwards;
+}
+
+@keyframes pop-out {
+  60% {
+    transform: scale(1.12);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(0.45);
+    opacity: 0;
+  }
+}
+
+.shape:focus-visible {
+  outline: 3px solid #ffbf3c;
+  outline-offset: 2px;
+}
+
+.shape {
+  animation: fade-in 0.35s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
